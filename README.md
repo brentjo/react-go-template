@@ -3,8 +3,8 @@
 A template repository to create simple React web apps with a Go powered backend. The output is a single binary with your static JS/HTML/CSS assets embedded within it, for easy distribution and running on low spec'd hardware like Raspberry Pis or other devboards.
 
 <p align="center">
-  <img src="https://github.com/brentjo/react-go-template/assets/6415223/0c4170ff-76c3-405a-ba95-613d3a3ce802" width="400px">
-  <img src="https://github.com/brentjo/react-go-template/assets/6415223/2cbe910e-d715-45fe-a483-87d705383b84" width="400px">
+  <img src="https://github.com/brentjo/react-go-template/assets/6415223/e8551741-50ee-4b51-aa02-1cc31d4c8bb7" width="400px">
+  <img src="https://github.com/brentjo/react-go-template/assets/6415223/76fc8c46-22ec-493d-a7b7-4260df7717f8" width="400px">
 </p>
 
 ### Setup and usage
@@ -44,6 +44,8 @@ Run the binary:
 4. These contents are placed into an [embedded](https://pkg.go.dev/embed) file system at compile time, so the final output is self-contained within the binary, and there's no need to copy around HTML/JS/CSS separately.
 5. Run the built binary, and you have your React app being served, along with any API routes you wrote.
 
+
+## Why?
 In the past I would use Next.js or Ruby with Sinatra when I needed to create a simple local-network web app, but I always found working with them on devboards/mini-PCs a bit painful: the devboard might not support the runtime, deploying and managing the dependencies with `npm` / `gem` was tough and prone to breakage depending on how it was set up, the apps would often run out of memory, etc.
 
 Go is fantastic on all these fronts: it's compiled to a single binary for easy deployment, the language has great hardware support, it's very fast and you're in control of your memory footprint while still working in a memory-safe language, etc.
