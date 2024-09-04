@@ -40,7 +40,7 @@ Run the binary:
     - For example, this handler for fetching the current time:
       - [`customizations.go`](https://github.com/brentjo/react-go-template/blob/536060b376edec4b6a04cacb3a0998a9a6b6ec7f/customizations.go#L10-L11)
     - If you want any other paths besides the root `/` to render your React app, be sure to [add them to `allowedPathsForSPA`](https://github.com/brentjo/react-go-template/blob/536060b376edec4b6a04cacb3a0998a9a6b6ec7f/customizations.go#L13-L14)
-3. At [build time](https://github.com/brentjo/react-go-template/blob/1b4bef9c465cd39c071d65e95f64a74e723cc938/Makefile#L3-L7), the JSX is transpiled with `esbuild` and copied into a directory for publishing, along with the static React library dependencies within the `/static` folder
+3. At [build time](https://github.com/brentjo/react-go-template/blob/042befde25655114e1957e2b6dabcd28ae7953b8/Makefile#L4-L7), the JSX is transpiled with `esbuild` and copied into a directory for publishing, along with the static React library dependencies within the `/static` folder
 4. These contents are placed into an [embedded](https://pkg.go.dev/embed) file system at compile time, so the final output is self-contained within the binary, and there's no need to copy around HTML/JS/CSS separately.
 5. Run the built binary, and you have your React app being served, along with any API routes you wrote.
 
