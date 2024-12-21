@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"embed"
 	"flag"
+	"fmt"
 	"io/fs"
 	"log"
 	"net/http"
@@ -37,19 +38,15 @@ func setupServer() {
 	}
 	lastModified := time.Now() // Use boot time as the index.html's last modified time since it's embedded within the binary and won't change
 
-	http.Handle("/", http.FileServerFS(publishedFS))
+	http.Handle("GET /", http.FileServerFS(publishedFS))
 
 	// Allow index.html to be served to get SPA-behavior
 	// where certain allowed URL paths can be directly visited and not 404
 	for _, path := range allowedPathsForSPA {
 		p := path
-		http.HandleFunc(p, func(w http.ResponseWriter, r *http.Request) {
-			if r.URL.Path == p {
-				reader := bytes.NewReader(indexHTMLContent)
-				http.ServeContent(w, r, "index.html", lastModified, reader)
-			} else {
-				http.NotFound(w, r)
-			}
+		http.HandleFunc(fmt.Sprintf("GET %s", p), func(w http.ResponseWriter, r *http.Request) {
+			reader := bytes.NewReader(indexHTMLContent)
+			http.ServeContent(w, r, "index.html", lastModified, reader)
 		})
 	}
 }

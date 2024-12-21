@@ -8,7 +8,7 @@ import (
 
 func customizations() {
 	// Register any custom backend handlers needed
-	http.HandleFunc("/api/time", timeHandler)
+	http.HandleFunc("GET /api/time", timeHandler)
 
 	// Register the paths you want to render the default index.html to enable SPA behavior
 	allowedPathsForSPA = append(allowedPathsForSPA, "/time", "/counter")
